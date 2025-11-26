@@ -1,7 +1,15 @@
 # SmartFIt
 
 Smart Fit AI is an advanced, AI-powered fitness companion designed to help you achieve your dream physique with precision and personalization. It analyzes your goals, body type, lifestyle, and progress to create dynamic workout plans, tailored nutrition guidance, and real-time adjustments.
+
+
 ![image alt](https://github.com/abhinav-garg-code/SmartFit/blob/2c52f51bb425e25a9c1ad9051c22cad18e34c345/assets/Screenshots/Screenshot%202025-11-26%20165205.png)
+
+![image alt](https://github.com/abhinav-garg-code/SmartFit/blob/3a2b95cbd399e16d2949dd52192a55665ef5e727/assets/Screenshots/Screenshot%202025-11-26%20165226.png)
+
+![image alt]
+
+
 
 ---
 
