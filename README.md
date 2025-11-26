@@ -7,7 +7,7 @@ Smart Fit AI is an advanced, AI-powered fitness companion designed to help you a
 
 ![image alt](https://github.com/abhinav-garg-code/SmartFit/blob/3a2b95cbd399e16d2949dd52192a55665ef5e727/assets/Screenshots/Screenshot%202025-11-26%20165226.png)
 
-![image alt]
+![image alt](https://github.com/abhinav-garg-code/SmartFit/blob/1fb041bb919832736127d3b195dd166d89e8e458/assets/Screenshots/Screenshot%202025-11-26%20165353.png)
 
 
 
