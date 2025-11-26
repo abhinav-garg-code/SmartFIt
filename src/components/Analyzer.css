@@ -1,0 +1,611 @@
+/* Gemini Analyzer - Gemini Style UI */
+.gemini-analyzer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  padding: 40px 20px;
+  gap: 0;
+  position: relative; /* Added for back button positioning */
+  overflow: hidden; /* Added to contain background gradients */
+  background: radial-gradient(circle at top, #141414 0%, #070707 45%, #030303 100%);
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #141414 0%, #070707 45%, #030303 100%);
+}
+
+/* Top Section */
+.analyzer-top {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.analyzer-title {
+  margin: 0 0 10px 0;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.analyzer-subtitle {
+  margin: 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+/* Main Content */
+.analyzer-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Input Section */
+.analyzer-input-section {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.capture-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.camera-toggle-btn {
+  padding: 10px 22px;
+  border-radius: 24px;
+  border: 1px solid rgba(102, 126, 234, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.camera-toggle-btn:hover:not(:disabled) {
+  background: rgba(102, 126, 234, 0.2);
+  border-color: rgba(118, 75, 162, 0.55);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.25);
+}
+
+.camera-toggle-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.camera-toggle-btn.active {
+  background: linear-gradient(135deg, rgba(124, 92, 255, 0.75), rgba(77, 163, 255, 0.75));
+  border-color: rgba(124, 92, 255, 0.9);
+  box-shadow: 0 14px 32px rgba(79, 70, 229, 0.35);
+}
+
+.capture-hint {
+  flex: 1;
+  min-width: 180px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: right;
+}
+
+@media (max-width: 520px) {
+  .capture-hint {
+    text-align: left;
+  }
+}
+
+.camera-error-banner {
+  margin-top: 8px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(239, 68, 68, 0.45);
+  background: rgba(239, 68, 68, 0.1);
+  color: #fca5a5;
+  font-size: 0.9rem;
+}
+
+.camera-preview {
+  margin-top: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 35px rgba(15, 15, 35, 0.45);
+  backdrop-filter: blur(12px);
+}
+
+.camera-feed {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #000000;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.camera-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.camera-action-btn {
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.camera-action-btn.primary {
+  background: linear-gradient(135deg, #7c5cff, #4da3ff);
+  border-color: rgba(124, 92, 255, 0.8);
+  box-shadow: 0 12px 26px rgba(79, 70, 229, 0.3);
+}
+
+.camera-action-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.3);
+}
+
+.camera-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.capture-status {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  font-weight: 500;
+  flex: 1;
+  text-align: right;
+}
+
+.input-previews-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.preview-meta {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  pointer-events: none;
+}
+
+.preview-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(124, 92, 255, 0.85);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.preview-index {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.input-image-preview {
+  position: relative;
+  display: flex;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+  background: rgba(15, 15, 20, 0.6);
+}
+
+.input-image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-image-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.58);
+  border: none;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+.remove-image-btn:hover {
+  background: rgba(0, 0, 0, 0.82);
+  transform: scale(1.08) translateY(-1px);
+}
+
+/* Input Form */
+.input-form {
+  width: 100%;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: 28px;
+  padding: 12px 18px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(102, 126, 234, 0.6);
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.2);
+}
+
+.text-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 15px;
+  padding: 8px 0;
+  font-family: inherit;
+  outline: none;
+}
+
+.text-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* File Input */
+.file-input-hidden {
+  display: none;
+}
+
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-right: 10px;
+}
+
+.file-input-label:hover {
+  color: rgba(102, 126, 234, 0.8);
+  transform: scale(1.1);
+}
+
+/* Send Button */
+.send-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border: none;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.send-btn:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.send-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.send-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Suggestions Section */
+.suggestions-section {
+  width: 100%;
+}
+
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  justify-items: center;
+}
+
+/* Suggestion Button */
+.suggestion-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 140px;
+  aspect-ratio: 1;
+  padding: 16px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.5), inset 0 -6px 12px rgba(255,255,255,0.02);
+}
+
+.suggestion-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(102, 126, 234, 0.5);
+  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);
+}
+
+.suggestion-btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.suggestion-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* selected state */
+.suggestion-btn.selected {
+  background: linear-gradient(135deg, rgba(102,126,234,0.22), rgba(118,75,162,0.16));
+  border-color: rgba(102,126,234,0.85);
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 18px 40px rgba(102,126,234,0.24);
+}
+
+.suggestion-btn.selected .suggestion-icon {
+  transform: scale(1.08);
+}
+
+.suggestion-icon {
+  font-size: 30px;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.6));
+}
+
+.suggestion-text {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+/* Results Section */
+.results-section {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.results-section::-webkit-scrollbar {
+  width: 6px;
+}
+
+.results-section::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.results-section::-webkit-scrollbar-thumb {
+  background: rgba(102, 126, 234, 0.4);
+  border-radius: 10px;
+}
+
+.results-section::-webkit-scrollbar-thumb:hover {
+  background: rgba(102, 126, 234, 0.6);
+}
+
+.error-box,
+.success-box,
+.info-box {
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.error-box {
+  background: rgba(254, 226, 226, 0.1);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+.success-box {
+  background: rgba(236, 253, 245, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #6ee7b7;
+}
+
+.info-box {
+  background: rgba(240, 249, 255, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #93c5fd;
+}
+
+.error-box h3,
+.success-box h3,
+.info-box h3 {
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.error-box p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.response-text {
+  font-size: 16px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: rgba(245, 255, 250, 0.95);
+  background: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(255,255,255,0.02));
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.response-json {
+  margin: 0;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 12px;
+  overflow-x: auto;
+  line-height: 1.4;
+  color: #e0e0e0;
+  font-family: 'Courier New', monospace;
+}
+
+/* Send icon & spinner */
+.send-icon {
+  width: 18px;
+  height: 18px;
+  color: white;
+}
+
+/* Make send button slightly larger and sticker-like */
+.send-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #7c5cff, #4da3ff);
+  box-shadow: 0 12px 30px rgba(79,70,229,0.25);
+  border: none;
+}
+
+.send-btn:disabled { opacity: 0.6; }
+
+/* Response heading class for consistent, bold headings */
+.response-heading {
+  font-weight: 800;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+/* New Analysis Button */
+.new-analysis-btn {
+  align-self: center;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.new-analysis-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.new-analysis-btn:active {
+  transform: translateY(0);
+}
+
+/* --- ADDED FOR BACK BUTTON --- */
+.analyzer-back-button {
+  position: absolute;
+  top: 40px;
+  left: 20px;
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  z-index: 10;
+}
+
+.analyzer-back-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateX(-2px);
+}
+
+.analyzer-back-button:active {
+  transform: translateX(-1px);
+}
