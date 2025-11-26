@@ -176,6 +176,7 @@ SmartFit/
 - **Vite** - Build tool and dev server
 - **CSS3** - Styling
 - **Google Fonts** - Inter font family
+- Vertex AI
 ---
 
 ## 📧 Support
